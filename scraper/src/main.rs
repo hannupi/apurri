@@ -4,10 +4,14 @@ use apurri_scraper::Scraper;
 
 fn main() -> () {
     let args = env::args().skip(1).collect::<Vec<String>>();
+    if args.is_empty() {
+        eprint!("Give at least one keyword as args");
+        std::process::exit(1);
+    }
 
     let scraper = Scraper::new(args);
 
-    // url for keebs
-    let url = "https://www.tori.fi/recommerce/forsale/search?computeracc_type=3&product_category=2.93.3215.46&sort=PUBLISHED_DESC";
-    scraper.scrape_page(url);
+    for keyword in scraper.keywords.iter() {
+        scraper.scrape_page(keyword);
+    }
 }
