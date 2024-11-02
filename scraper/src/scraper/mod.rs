@@ -32,8 +32,8 @@ impl Scraper {
             match scrapedentry::extract_entry(&item) {
                 Ok(entry) => {
                     println!(
-                        "Name: {} \nPrice: {}\nImg: {}\n",
-                        entry.name, entry.price, entry.img
+                        "Name: {} \nPrice: {}\nImg: {}\nUrl: {}\n",
+                        entry.name, entry.price, entry.img, entry.url
                     );
                 }
                 Err(err) => eprint!("Failed to extract entry: {}", err),
