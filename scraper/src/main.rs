@@ -9,7 +9,7 @@ fn main() {
         std::process::exit(1);
     }
 
-    let scraper = scraper::Scraper::new(keywords);
+    let scraper = scraper::Scraper::new(keywords, "../sqlite.db");
 
     for keyword in scraper.keywords.iter() {
         scraper.scrape_page(keyword);
